@@ -2,12 +2,12 @@ import React from 'react';
 import './PokeList.scss';
 import PokeCell from '../PokeCell/PokeCell';
 
-const PokeList = () => {
+const PokeList = ({ handleOnClick }) => {
   return (
     <section className="poke-list">
-      <PokeCell />
-      <PokeCell />
-      <PokeCell />
+      <PokeCell handleOnClick={handleOnClick} />
+      <PokeCell handleOnClick={handleOnClick} />
+      <PokeCell handleOnClick={handleOnClick} />
     </section>
   )
 }

@@ -1,14 +1,10 @@
-import React from 'react';
-import './PokeCell.scss';
+import React from "react";
+import "./PokeCell.scss";
 
-const PokeList = () => {
-  return (
-    <button className="poke-cell"></button>
-  )
-}
+const PokeCell = ({ handleOnClick }) => {
+  return <button className="poke-cell" onClick={() => handleOnClick()} />;
+};
 
-PokeList.propTypes = {
+PokeCell.propTypes = {};
 
-}
-
-export default PokeList
+export default PokeCell;
