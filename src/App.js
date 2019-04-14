@@ -7,7 +7,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      pokemon_entries: null
+      pokemon_entries: null,
+      pokemon_detail: null
     };
     this.handleOnClick = this.handleOnClick.bind(this);
   }
@@ -31,12 +32,36 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
-  handleOnClick() {
-    console.log("Clicked PokeCell");
+  handleOnClick(id, url) {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        let evolves_to = "";
+        if (data.evolution_chain.url) {
+          fetch(data.evolution_chain.url)
+            .then(eres => eres.json())
+            .then(edata => {
+              evolves_to = edata.chain.evolves_to[0].species.name;
+            })
+            .catch(err => console.log("evolution_chain Error", err));
+        }
+
+        const pokemonDetailData = {
+          id: data.id,
+          name: data.name,
+          desc: data.flavor_text_entries[1].flavor_text,
+          base_happiness: data.base_happiness,
+          capture_rate: data.capture_rate,
+          evolves_to: evolves_to
+        };
+
+        this.setState({ pokemon_detail: pokemonDetailData });
+      })
+      .catch(err => console.log("pokemon_detail Error", err));
   }
 
   render() {
-    const { pokemon_entries } = this.state;
+    const { pokemon_entries, pokemon_detail } = this.state;
 
     return (
       <div>
@@ -46,7 +71,7 @@ class App extends Component {
               handleOnClick={this.handleOnClick}
               pokemonEntries={pokemon_entries}
             />
-            <PokeDetails />
+            {pokemon_detail && <PokeDetails {...pokemon_detail} />}
           </div>
         )}
       </div>
