@@ -36,7 +36,7 @@ class App extends Component {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        console.log("Poke Details", data);
+        // console.log("Poke Details", data);
 
         // let poke_image = "";
         // if (data.varieties.pokemon.url) {
@@ -83,7 +83,7 @@ class App extends Component {
 
     return (
       <div>
-        <h1>National Pokedex</h1>
+        <h1 className="title">National Pokedex</h1>
         {pokemon_entries && (
           <div className="App">
             <PokeList
