@@ -1,19 +1,25 @@
-import React from 'react';
-import './PokeList.scss';
-import PokeCell from '../PokeCell/PokeCell';
+import React from "react";
+import "./PokeList.scss";
+import PokeCell from "../PokeCell/PokeCell";
 
-const PokeList = ({ handleOnClick }) => {
-  return (
-    <section className="poke-list">
-      <PokeCell handleOnClick={handleOnClick} />
-      <PokeCell handleOnClick={handleOnClick} />
-      <PokeCell handleOnClick={handleOnClick} />
-    </section>
-  )
-}
+const PokeList = props => {
+  const { pokemonEntries, handleOnClick } = props;
 
-PokeList.propTypes = {
+  const pokeCells = pokemonEntries.map(pokeEntry => {
+    return (
+      <PokeCell
+        key={pokeEntry.entry_number}
+        id={pokeEntry.entry_number}
+        name={pokeEntry.name}
+        url={pokeEntry.url}
+        handleOnClick={handleOnClick}
+      />
+    );
+  });
 
-}
+  return <section className="poke-list">{pokeCells}</section>;
+};
 
-export default PokeList
+PokeList.propTypes = {};
+
+export default PokeList;
