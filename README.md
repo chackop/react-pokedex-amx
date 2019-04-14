@@ -8,9 +8,9 @@ See Demo as follows:
 
 ### Lighthouse
 It also has high lighthouse score for production build as follows:
-![](PokeDex-Lighthouse Score.gif)
+![](PokeDex-Lighthouse-Score.gif)
 
-## Future Enhancements
+## Future Enhancements 
 
 ### Better Cached Images loading
 Images were applied previously as seen in App.js:L41 but had loading issues when loading detailed view so it has been commented for the time being.
@@ -19,8 +19,11 @@ So further changes to cache or render the list on server side for better image l
 ### Server Side rendering
 Changes to render server side
 
-### Server Side rendering
-Changes to render server side
+### Internationalisation
+Changes for Internationalisation
+
+### Material Design
+Apply material design along with bootstrap if needed
 
 
 ## Available Scripts
