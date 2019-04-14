@@ -18,7 +18,7 @@ class App extends Component {
     fetch(POKE_LIST_URI)
       .then(res => res.json())
       .then(data => {
-        let filteredData = data.pokemon_entries.slice(10, 90).map(fdata => {
+        let filteredData = data.pokemon_entries.slice(0, 40).map(fdata => {
           return {
             entry_number: fdata.entry_number,
             name: fdata.pokemon_species.name,
@@ -36,8 +36,8 @@ class App extends Component {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        
+        console.log("Poke Details", data);
+
         // let poke_image = "";
         // if (data.varieties.pokemon.url) {
         //   fetch(data.varieties.pokemon.url)
@@ -61,14 +61,16 @@ class App extends Component {
         const pokemonDetailData = {
           id: data.id,
           name: data.name,
-          desc: data.flavor_text_entries[1].flavor_text,
+          desc: data.flavor_text_entries[1].flavor_text || null,
           // poke_image: poke_image,
-          base_happiness: data.base_happiness,
-          capture_rate: data.capture_rate,
-          habitat: data.habitat.name,
-          egg_group: data.egg_groups[0].name,
-          evolves_to: evolves_to,
-          evolves_from: data.evolves_from_species.name
+          base_happiness: data.base_happiness || null,
+          capture_rate: data.capture_rate || null,
+          habitat: data.habitat.name || null,
+          egg_group: data.egg_groups[0].name || null,
+          evolves_to: evolves_to || null,
+          evolves_from: data.evolves_from_species
+            ? data.evolves_from_species.name
+            : null
         };
 
         this.setState({ pokemon_detail: pokemonDetailData });
