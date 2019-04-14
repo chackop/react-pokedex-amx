@@ -36,6 +36,18 @@ class App extends Component {
     fetch(url)
       .then(res => res.json())
       .then(data => {
+        console.log(data);
+        
+        // let poke_image = "";
+        // if (data.varieties.pokemon.url) {
+        //   fetch(data.varieties.pokemon.url)
+        //     .then(pres => pres.json())
+        //     .then(pdata => {
+        //       poke_image = pdata.sprites.front_default;
+        //     })
+        //     .catch(err => console.log("evolution_chain Error", err));
+        // }
+
         let evolves_to = "";
         if (data.evolution_chain.url) {
           fetch(data.evolution_chain.url)
@@ -50,9 +62,13 @@ class App extends Component {
           id: data.id,
           name: data.name,
           desc: data.flavor_text_entries[1].flavor_text,
+          // poke_image: poke_image,
           base_happiness: data.base_happiness,
           capture_rate: data.capture_rate,
-          evolves_to: evolves_to
+          habitat: data.habitat.name,
+          egg_group: data.egg_groups[0].name,
+          evolves_to: evolves_to,
+          evolves_from: data.evolves_from_species.name
         };
 
         this.setState({ pokemon_detail: pokemonDetailData });
@@ -65,6 +81,7 @@ class App extends Component {
 
     return (
       <div>
+        <h1>National Pokedex</h1>
         {pokemon_entries && (
           <div className="App">
             <PokeList

@@ -11,7 +11,7 @@
 }
 
 .data-wrapper {
-  width: 80%;
+  width: 100%;
   height: 80%;
   padding: 10px;
   margin: 0 auto;
@@ -25,5 +25,15 @@
 }
 
 .data-char {
-  font-size: 10px;
+  font-size: 12px;
+}
+
+.poke-image {
+  width: 80%;
+  height: 150px;
+  margin: 10px auto;
+  background-color: grey;
+  border: 15px solid lightgray;
+  border-radius: 5px;
+  color: darkslategrey;
 }
