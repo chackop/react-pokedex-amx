@@ -1,4 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project
+
+This react project displays the National Pokèdex from PokeApi and display a profile for the Pokemon including a description, its habitat(s), and its stats.
+
+### Demo
+See Demo as follows:
+![](Pokedex-Working.gif)
+
+### Lighthouse
+It also has high lighthouse score for production build as follows:
+![](PokeDex-Lighthouse Score.gif)
+
+## Future Enhancements
+
+### Better Cached Images loading
+Images were applied previously as seen in App.js:L41 but had loading issues when loading detailed view so it has been commented for the time being.
+So further changes to cache or render the list on server side for better image loading is needed.
+
+### Server Side rendering
+Changes to render server side
+
+### Server Side rendering
+Changes to render server side
+
 
 ## Available Scripts
 
