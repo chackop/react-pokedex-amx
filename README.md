@@ -6,6 +6,9 @@ This react project displays the National Pokèdex from PokeApi and display a pro
 See Demo as follows:
 ![](Pokedex-Working.gif)
 
+With image:
+![](PokeImage.gif)
+
 ### Lighthouse
 It also has high lighthouse score for production build as follows:
 ![](PokeDex-Lighthouse-Score.gif)
