@@ -9,15 +9,25 @@ export default class PokeDetails extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  fetchImage() {
     const { id, poke_image_url } = this.props;
+
+    fetch(poke_image_url)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ poke_image: data.sprites.front_default });
+      })
+      .catch(err => console.log(err));
+  }
+
+  componentDidMount() {
+    this.fetchImage();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { id } = this.props;
     if (nextProps.id !== id) {
-      fetch(poke_image_url)
-        .then(res => res.json())
-        .then(data => {
-          this.setState({ poke_image: data.sprites.front_default });
-        })
-        .catch(err => console.log(err));
+      this.fetchImage();
     }
   }
 
