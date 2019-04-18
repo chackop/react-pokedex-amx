@@ -23,7 +23,6 @@ class App extends Component {
             entry_number: fdata.entry_number,
             name: fdata.pokemon_species.name,
             url: fdata.pokemon_species.url
-            // imageURL: fdata.webformatURL,
           };
         });
 
@@ -36,38 +35,16 @@ class App extends Component {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        // console.log("Poke Details", data);
-
-        // let poke_image = "";
-        // if (data.varieties.pokemon.url) {
-        //   fetch(data.varieties.pokemon.url)
-        //     .then(pres => pres.json())
-        //     .then(pdata => {
-        //       poke_image = pdata.sprites.front_default;
-        //     })
-        //     .catch(err => console.log("evolution_chain Error", err));
-        // }
-
-        let evolves_to = "";
-        if (data.evolution_chain.url) {
-          fetch(data.evolution_chain.url)
-            .then(eres => eres.json())
-            .then(edata => {
-              evolves_to = edata.chain.evolves_to[0].species.name;
-            })
-            .catch(err => console.log("evolution_chain Error", err));
-        }
-
         const pokemonDetailData = {
           id: data.id,
           name: data.name,
           desc: data.flavor_text_entries[1].flavor_text || null,
-          // poke_image: poke_image,
+          poke_image_url: data.varieties[0].pokemon.url || null,
           base_happiness: data.base_happiness || null,
           capture_rate: data.capture_rate || null,
           habitat: data.habitat.name || null,
           egg_group: data.egg_groups[0].name || null,
-          evolves_to: evolves_to || null,
+          evolves_to_url: data.evolution_chain.url || null,
           evolves_from: data.evolves_from_species
             ? data.evolves_from_species.name
             : null
